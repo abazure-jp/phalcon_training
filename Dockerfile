@@ -1,4 +1,6 @@
 FROM centos:7
+MAINTAINER abazure-jp<say.0213@gmail.com>
+
 RUN yum update -y
 
 # PHP 7.0
@@ -11,9 +13,17 @@ RUN yum install -y git vim gcc make
 RUN cd && git clone git://github.com/phalcon/cphalcon.git
 RUN cd /root/cphalcon/build/ && ./install
 
-#httpd
+# httpd
+ADD httpd.conf /etc/httpd/conf/httpd.conf
 RUN systemctl enable httpd.service
-ADD . /var/www/html/
 
+# sshd
+RUN yum install -y openssh-server
+RUN systemctl enable sshd.service
+
+# free passwd
+RUN echo 'root:root' | chpasswd
+
+EXPOSE 22
 EXPOSE 80
 CMD ["/sbin/init"]
