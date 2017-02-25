@@ -9,8 +9,11 @@ RUN yum install -y --enablerepo=remi,remi-php70 php php-devel php-mbstring php-p
 # phalcon
 RUN yum install -y git vim gcc make
 RUN cd && git clone git://github.com/phalcon/cphalcon.git
-RUN /root/cphalcon/build/install
+RUN cd /root/cphalcon/build/ && ./install
 
 #httpd
 RUN systemctl enable httpd.service
 ADD . /var/www/html/
+
+EXPOSE 80
+CMD ["/sbin/init"]
