@@ -8,11 +8,13 @@ define('APP_PATH', BASE_PATH . '/app');
 
 try {
 
+    echo "(U^ω^) アルトくぅ〜ん";
     /**
      * The FactoryDefault Dependency Injector automatically registers
      * the services that provide a full stack framework.
      */
     $di = new FactoryDefault();
+    echo "うんぽこ" . PHP_EOL;
 
     /**
      * Read services
