@@ -1,4 +1,3 @@
-#hoge
 FROM centos:7
 MAINTAINER abazure-jp<say.0213@gmail.com>
 
@@ -24,10 +23,6 @@ RUN systemctl enable sshd.service
 
 # free passwd
 RUN echo 'root:root' | chpasswd
-
-# mysql
-RUN yum install -y mariadb mariadb-server
-RUN systemctl start mariadb
 
 EXPOSE 22
 EXPOSE 80
