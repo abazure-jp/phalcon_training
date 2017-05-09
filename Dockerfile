@@ -1,3 +1,4 @@
+#hogehoge
 FROM centos:7
 MAINTAINER abazure-jp<say.0213@gmail.com>
 
